@@ -14,20 +14,16 @@ interface TabsType {
 const Tabs: React.FC<TabsType> = properties => {
   const { elements, setElements } = properties;
   const setActiveElement = (id: number) => {
-    const updElements = elements.map(element => {
-      if (element.id === id) {
-        element.active = true;
-      } else {
-        element.active = false;
-      }
-      return element;
-    });
+    const updElements = elements.map(element => ({
+      ...element,
+      active: element.id === id,
+    }));
     setElements(updElements);
   };
   return (
     <ul className="list-reset flex border-b mb-4">
-      {elements.map((el, id) => (
-        <li className="-mb-px mr-1" key={id}>
+      {elements.map(el => (
+        <li className="-mb-px mr-1" key={el.id}>
           <div
             className={`bg-white inline-block py-2 px-4 text-sm  cursor-pointer ${
               el.active

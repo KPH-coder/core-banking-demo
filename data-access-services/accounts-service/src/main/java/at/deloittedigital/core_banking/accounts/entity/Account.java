@@ -61,6 +61,6 @@ public class Account extends BaseEntity {
 
     @Override
     public int hashCode() {
-        return 0;
+        return Objects.hash(getId());
     }
 }
