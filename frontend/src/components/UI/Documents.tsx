@@ -28,8 +28,11 @@ const Documents: React.FC<DocumentsType> = properties => {
           </tr>
         </thead>
         <tbody className="text-gray-600 text-sm">
-          {documents.map((doc, id) => (
-            <tr key={id} className={`border-b border-gray-200 ${id % 2 === 0 ? "" : "bg-pacific-50 bg-opacity-50"}`}>
+          {documents.map((doc, index) => (
+            <tr
+              key={doc.document_list_id}
+              className={`border-b border-gray-200 ${index % 2 === 0 ? "" : "bg-pacific-50 bg-opacity-50"}`}
+            >
               <td className="py-2 px-2">{doc.document_list_id}</td>
               <td className="py-2 px-2 text-denim-600 font-medium">
                 <a href={doc.location_url} target="_blank" rel="noreferrer">
