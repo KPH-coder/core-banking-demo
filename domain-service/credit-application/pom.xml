@@ -6,7 +6,9 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.2</version>
+        <!-- Upgraded from 2.4.2 to patch CVE-2022-22965 (Spring4Shell RCE), CVE-2022-1471 (SnakeYAML RCE),
+             CVE-2021-42550 (Logback JNDI) -->
+        <version>2.7.18</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -17,6 +19,9 @@
     <properties>
         <java.version>11</java.version>
         <checkstyle.version>3.1.2</checkstyle.version>
+        <!-- Override managed Tomcat to fix CVE-2024-50379, CVE-2024-56337 (Critical RCE),
+             CVE-2025-24813, CVE-2024-34750, CVE-2024-38286 (High). Patched in 9.0.116. -->
+        <tomcat.version>9.0.116</tomcat.version>
         <sonar.exclusions>
             **/config/XRayInspector.java
         </sonar.exclusions>

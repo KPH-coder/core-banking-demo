@@ -6,7 +6,9 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.2</version>
+        <!-- Upgraded from 2.4.2 to patch CVE-2022-22965 (Spring4Shell RCE), CVE-2021-42392 (H2 JNDI RCE),
+             CVE-2020-36518 (Jackson DoS), CVE-2021-42550 (Logback JNDI), CVE-2020-25638 (Hibernate SQLi) -->
+        <version>2.7.18</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -26,6 +28,13 @@
         <java.version>11</java.version>
         <checkstyle.version>3.1.2</checkstyle.version>
         <mapstruct.version>1.4.1.Final</mapstruct.version>
+        <!-- Override managed Tomcat to fix CVE-2024-50379, CVE-2024-56337 (Critical RCE),
+             CVE-2025-24813, CVE-2024-34750, CVE-2024-38286, CVE-2025-31650, CVE-2025-31651 (High DoS/traversal).
+             Patched in 9.0.116. -->
+        <tomcat.version>9.0.116</tomcat.version>
+        <!-- Override managed PostgreSQL JDBC to fix CVE-2024-1597, CVE-2022-26520 (High SQLi).
+             Patched in 42.7.2+. -->
+        <postgresql.version>42.7.11</postgresql.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <build-helper-maven-plugin.version>3.2.0</build-helper-maven-plugin.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
