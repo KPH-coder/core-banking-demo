@@ -11,8 +11,8 @@ services:
       - ../sql/Accounts.sql/:/docker-entrypoint-initdb.d/Accounts.sql
     environment:
       DATABASE_HOST: 127.0.0.1
-      POSTGRES_USER: rootadmin
-      POSTGRES_PASSWORD: securepassword
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ACCOUNTS
 
   transactionsdb:
@@ -23,8 +23,8 @@ services:
     volumes:
       - ../sql/Transactions.sql:/docker-entrypoint-initdb.d/Transactions.sql
     environment:
-      POSTGRES_USER: rootadmin
-      POSTGRES_PASSWORD: securepassword
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: TRANSACTIONS
 
   credit-application-db:
@@ -35,8 +35,8 @@ services:
     volumes:
       - ../sql/creditApplication.sql:/docker-entrypoint-initdb.d/creditApplication.sql
     environment:
-      POSTGRES_USER: rootadmin
-      POSTGRES_PASSWORD: securepassword
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: CREDITAPPLICATION
 
   loans-db:
@@ -46,7 +46,7 @@ services:
     privileged: true
     environment:
       LICENSE: accept
-      DB2INST1_PASSWORD: db2pwd
+      DB2INST1_PASSWORD: ${DB2INST1_PASSWORD}
       DBNAME: Loans
     ports:
       - "50000:50000"

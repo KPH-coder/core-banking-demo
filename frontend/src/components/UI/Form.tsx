@@ -45,37 +45,34 @@ const Form: React.FC<FormType> = properties => {
     setFormError("");
   }, []);
   const checkErrors = () => {
-    const updElements = [...elements].map(element => {
+    const updElements = elements.map(element => {
       if (element.type === "input" && element.required && !element.value) {
-        element.error = true;
+        return { ...element, error: true };
       }
       return element;
     });
-    if (!elements.find(e => e.error)) {
+    if (!updElements.find(e => e.error)) {
       setFormError("");
     }
     setForm(updElements);
   };
   const changeForm = (id: number, newValue: string) => {
-    const updElements = [...elements].map(element => {
+    const updElements = elements.map(element => {
       if (element.id === id && element.type === "input") {
-        if (element.error && newValue.length) {
-          element.error = false;
-        }
-        if (element.error && !newValue.length) {
-          element.error = true;
-        }
-        element.value = newValue;
+        return {
+          ...element,
+          error: element.required && !newValue.length,
+          value: newValue,
+        };
       }
       return element;
     });
     setForm(updElements);
   };
   const clearForm = () => {
-    const updElements = [...elements].map(element => {
+    const updElements = elements.map(element => {
       if (element.type === "input" && element.value) {
-        element.value = "";
-        element.error = false;
+        return { ...element, value: "", error: false };
       }
       return element;
     });

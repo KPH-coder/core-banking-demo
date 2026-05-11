@@ -1,7 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import PageMain from "./pages/Main";
-import Application from "./pages/Application";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Main from "./components/Main/Main";
+import Application from "./components/Application/Application";
 import { SiteBody, Top, Bottom, Content } from "./components/UI";
 
 const App: React.FC = () => {
@@ -10,10 +10,10 @@ const App: React.FC = () => {
       <SiteBody>
         <Top />
         <Content>
-          <Switch>
-            <Route path="/Application/:applicationID" component={Application} />
-            <Route component={PageMain} />
-          </Switch>
+          <Routes>
+            <Route path="/Application/:applicationID" element={<Application />} />
+            <Route path="*" element={<Main />} />
+          </Routes>
         </Content>
         <Bottom />
       </SiteBody>

@@ -14,14 +14,10 @@ interface TabsType {
 const Tabs: React.FC<TabsType> = properties => {
   const { elements, setElements } = properties;
   const setActiveElement = (id: number) => {
-    const updElements = elements.map(element => {
-      if (element.id === id) {
-        element.active = true;
-      } else {
-        element.active = false;
-      }
-      return element;
-    });
+    const updElements = elements.map(element => ({
+      ...element,
+      active: element.id === id,
+    }));
     setElements(updElements);
   };
   return (
