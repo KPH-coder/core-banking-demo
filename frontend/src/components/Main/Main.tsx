@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Header, Tabs, Form } from "../UI";
 
 const Main: React.FC = () => {
@@ -7,7 +7,7 @@ const Main: React.FC = () => {
     { name: "Search by Name", id: 1, active: true },
     { name: "Search by Application ID", id: 2, active: false },
   ]);
-  const history = useHistory();
+  const navigate = useNavigate();
   const [formName, setFormName] = useState([
     {
       id: 1,
@@ -56,7 +56,7 @@ const Main: React.FC = () => {
       type: "button",
       text: "Search",
       handler: () => {
-        history.push(`/application/${formID[0].value}`);
+        navigate(`/application/${formID[0].value}`);
       },
       divClass: "col-span-6",
     },

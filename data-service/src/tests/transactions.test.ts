@@ -22,7 +22,7 @@ test("test Transactions schema and resolver", async () => {
   const { data } = await query({
     query: gql`
       {
-        transactions(accountId: 12286356) {
+        transactions(accountId: "12286356") {
           accountId
           accountIban
           type
