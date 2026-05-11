@@ -8,7 +8,7 @@ export default class TransactionsAPI extends RESTDataSource {
     this.baseURL = config.transactions.url;
   }
 
-  async getTransactions(accountId: number): Promise<Transaction[]> {
+  async getTransactions(accountId: string): Promise<Transaction[]> {
     return this.get(`/transactions`, { accountId });
   }
 }

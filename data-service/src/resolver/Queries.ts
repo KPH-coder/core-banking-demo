@@ -17,7 +17,7 @@ export class QueriesResolver {
   }
 
   @Query(() => [Transaction])
-  async transactions(@Arg("accountId") accountId: number, @Ctx() { dataSources }: GraphQLContext): Promise<Transaction[]> {
+  async transactions(@Arg("accountId") accountId: string, @Ctx() { dataSources }: GraphQLContext): Promise<Transaction[]> {
     return dataSources.TransactionsAPI.getTransactions(accountId);
   }
 }
